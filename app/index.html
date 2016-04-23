@@ -13,8 +13,7 @@
   <title>HACK</title>
 </head>
 <body ng-controller="electionMateCtrl">
-  {{message}}
-  
+
    <div ng-if="question.id == current_question" ng-repeat="question in questions">
      <h1>{{question.question}}</h1>
      <div ng-if="question.text" class="text-input">
