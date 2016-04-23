@@ -3,6 +3,7 @@ electionMateApp.controller('electionMateCtrl', function($scope) {
     $scope.message = "hello world!!";
     $scope.current_question = 'registered';
     $scope.user_state = {};
+    $scope.todos = [];
     $scope.questions = [];
 
    $scope.start = function() {
@@ -43,7 +44,11 @@ electionMateApp.controller('electionMateCtrl', function($scope) {
                 chosen_answer = found_answer;
             }
         }
-
+        
+        if (chosen_answer.todo) {
+            $scope.todos.push(chosen_answer.todo);
+        }
+        
         if (chosen_answer.next_question === null) {
             $scope.user_state.complete = true;
         }

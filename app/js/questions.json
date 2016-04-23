@@ -174,7 +174,12 @@
           {
               "value": false,
               "display": "No",
-              "next_question": "postcode"
+              "next_question": "postcode",
+              "todo": {
+                  "id": "nino",
+                  "deadline": null,
+                  "display": "Phone the National Insurance numbers helpline on 0300 200 3502"
+              }
           }
       ]
   }

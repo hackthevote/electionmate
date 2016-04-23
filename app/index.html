@@ -27,7 +27,15 @@
      </div>
   </div>
 
+<ul ng-if="user_state.complete">
+  <li ng-repeat="todo in todos">{{todo.display}}</li>
+</ul>
+
+
 <pre>{{user_state}}</pre>
+<pre>{{todo}}</pre>
+
+
 
 <script src="main.js"></script>
 </body>
