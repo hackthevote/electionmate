@@ -1,0 +1,32 @@
+$hack-blue: rgb(31, 35, 171);
+// guesstimate for now
+$mobile-break: 850px;
+$large-break: 1100px;
+$font-family: "Lato", sans-serif;
+$background-color: #fff;
+$info-grey: #424242;
+//$button-colour: #b7b7b7;
+$button-colour: $hack-blue;
+$info-box-border-colour: #e5e5e5;
+$info-box-heading-bg: #fafafa;
+
+
+body {
+  font-family: $font-family;
+  background-color: $background-color;
+  font-size: 14px;
+  color: $info-grey;
+  line-height: 1.8;
+}
+
+.sections-container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &.about {
+    background-color: $hack-blue;
+  }
+
+}

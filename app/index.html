@@ -13,20 +13,24 @@
   <title>HACK</title>
 </head>
 <body ng-controller="electionMateCtrl">
-  {{message}}
-  
-   <div ng-if="question.id == current_question" ng-repeat="question in questions">
-     <h1>{{question.question}}</h1>
-     <div ng-if="question.text" class="text-input">
+
+   <div ng-if="question.id == current_question" ng-repeat="question in questions" class="container">
+     <h1 class="text-center">{{question.question}}</h1>
+     <div ng-if="question.text" class="row text-input text-center">
        <input ng-model="user_state[question.text_target]" type="text" />
        <button ng-click="nextQuestion(true)">Next</button>
      </div>
-     <div ng-repeat="answer in question.answers">
-       <button ng-click="nextQuestion(answer.value)">{{answer.display}}</button>
+     <div ng-repeat="answer in question.answers" class="row">
+       <div class="col-xs-4">&nbsp;</div>
+       <div class="col-xs-4">
+         <button ng-click="nextQuestion(answer.value)" class="btn-primary btn-block">{{answer.display}}</button>
+       </div>
+       <div class="col-xs-4">&nbsp;</div>
+
      </div>
   </div>
 
-<pre>{{user_state}}</pre>
+<!--<pre>{{user_state}}</pre>-->
 
 </body>
 </html>
