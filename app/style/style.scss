@@ -1,0 +1,85 @@
+$hack-blue: rgb(31, 35, 171);
+// guesstimate for now
+$mobile-break: 850px;
+$large-break: 1100px;
+$font-family: "Lato", sans-serif;
+$background-color: #fff;
+$info-grey: #424242;
+//$button-colour: #b7b7b7;
+$button-colour: $hack-blue;
+$info-box-border-colour: #e5e5e5;
+$info-box-heading-bg: #fafafa;
+
+
+body {
+  font-family: $font-family;
+  background-color: $background-color;
+  font-size: 14px;
+  color: $info-grey;
+  line-height: 1.8;
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
+}
+h1 {
+    font-weight: 100;
+}
+
+html,body,.container-fluid {
+    height: 100%;
+}
+
+img#logo {
+}
+
+.questionpanel {
+    background: linear-gradient(
+                    rgba(0, 0, 255, 0.25),
+                    rgba(0, 0, 255, 0.25)
+                ),
+                url('../img/bg.png');
+    background-position: bottom; 
+    color: white;
+    height: 100%;
+    padding: 15px;
+    h1 {
+        text-align: center;
+    }
+    input[type='text'] {
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid white;
+        margin-bottom: 40px;
+        font-size: 18pt;
+        text-align: center;
+        width: 100%;
+        height: 40px;
+    }
+    input:active {
+        border: none !important;
+    }
+    button {
+        border: 2px solid white;
+        background-color: transparent;
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    pre {
+        display: none;
+    }
+    #todolist {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+            margin: 10px;
+            padding: 5px;
+            border: 1px solid white;
+            input {
+                height: 20px;
+                width: 20px;
+            }
+        }
+    }
+}

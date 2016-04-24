@@ -28,6 +28,11 @@
               "next_question": "on_the_day"
           },
           {
+              "value": true,
+              "display": "I live outside the UK",
+              "next_question": "post_or_proxy"
+          },
+          {
               "value": false,
               "display": "I don't know",
               "next_question": "on_the_day"
