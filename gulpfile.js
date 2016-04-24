@@ -22,7 +22,7 @@ gulp.task('sass', function () {
       .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
       .pipe(csso())
       .on('error', gutil.log)
-      .pipe(gulp.dest('stylesheets'));
+      .pipe(gulp.dest('app/css/'));
 });
 
 gulp.task('watch', function () {

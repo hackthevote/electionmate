@@ -4,33 +4,45 @@
   <meta charset="utf-8">
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="/manifest.json">
+
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
   <title>HACK</title>
 </head>
 <body ng-controller="electionMateCtrl">
-
+  <button ng-click="restart();">RESTART</button>
    <div ng-if="question.id == current_question" ng-repeat="question in questions" class="container">
      <h1 class="text-center">{{question.question}}</h1>
      <div ng-if="question.text" class="row text-input text-center">
        <input ng-model="user_state[question.text_target]" type="text" />
-       <button ng-click="nextQuestion(true)">Next</button>
+       <button ng-click="nextQuestion(true);">Next</button>
      </div>
      <div ng-repeat="answer in question.answers" class="row">
        <div class="col-xs-4">&nbsp;</div>
        <div class="col-xs-4">
-         <button ng-click="nextQuestion(answer.value)" class="btn-primary btn-block">{{answer.display}}</button>
+         <button ng-if="answer.display" ng-click="nextQuestion(answer.value)" class="btn-primary btn-block">{{answer.display}}</button>
        </div>
        <div class="col-xs-4">&nbsp;</div>
-
      </div>
   </div>
 
-<!--<pre>{{user_state}}</pre>-->
+<ul ng-if="user_state.complete">
+  <li ng-repeat="todo in todos">{{todo.display}}</li>
+</ul>
 
+<pre>{{todo}}</pre>
+<pre>{{user_state}}</pre>
+
+
+
+<script src="main.js"></script>
 </body>
+<script>
+</script>
 </html>
