@@ -20,9 +20,10 @@
 </head>
 <body>
   <div ng-controller="representMeCtrl">
-    <form class="form-horizontal">
-        <button class="btn" ng-click="findQuestion()">Search</button>
-        <p>{{current_question}}</p>
+    <form ng-show="isNotComplete" class="form-horizontal">
+      <h4>Are these questions or statements important to you?</h4>
+      <h2>{{current_question}}</h2>
+      <button class="btn" ng-click="findQuestion()">Next</button>
     </form>
   </div>
   <div ng-controller="questionCtrl">
