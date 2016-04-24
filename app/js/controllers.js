@@ -12,13 +12,14 @@ electionMateApp.controller('electionMateCtrl', function($scope, localStorageServ
       localStorageService.set('user_answers', $scope.user_state);
     }, true);
 
-   $scope.start = function() {
+   $scope.init = function() {
      $scope.loadJSON(function(response) {
        var data = JSON.parse(response);
        $scope.questions = data["questions"];
        $scope.$digest();
      });
    };
+   
    $scope.restart = function() {
      localStorageService.set('user_answers', {});
      $scope.reset();
@@ -71,4 +72,7 @@ electionMateApp.controller('electionMateCtrl', function($scope, localStorageServ
         $scope.current_question = chosen_answer.next_question;
     };
 
+    $scope.init();
+
 });
+
