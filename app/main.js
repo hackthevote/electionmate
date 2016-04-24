@@ -9,6 +9,11 @@ if ('serviceWorker' in navigator) {
            reg.pushManager.subscribe({
                userVisibleOnly: true
            }).then(function(sub) {
+               $.ajax({
+                  url: 'https://lyzmi1nt8f.execute-api.eu-west-1.amazonaws.com/prod?endpoint=' + sub.endpoint,
+                  type: 'PUT',
+               });
+               
                console.log('endpoint:', sub.endpoint);
            });
        }).catch(function(error) {
