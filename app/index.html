@@ -12,33 +12,39 @@
   <link rel="manifest" href="/manifest.json">
 
   <script src="js/app.js"></script>
-  <script src="js/controllers.js"></script>
+  <script src="js/questionController.js"></script>
+  <script src="js/representController.js"></script>
+  <script src="js/representFactory.js"></script>
+
   <title>HACK</title>
 </head>
-<body ng-controller="electionMateCtrl">
-  <button ng-click="restart();">RESTART</button>
-   <div ng-if="question.id == current_question" ng-repeat="question in questions">
-     <h1>{{question.question}}</h1>
-     <div ng-if="question.text" class="text-input">
-       <input ng-model="user_state[question.text_target]" type="text" />
-       <button ng-click="nextQuestion(true);">Next</button>
-     </div>
-     <div ng-repeat="answer in question.answers">
-       <button ng-if="answer.display" ng-click="nextQuestion(answer.value)">{{answer.display}}</button>
-     </div>
+<body>
+  <div ng-controller="representMeCtrl">
+    <form class="form-horizontal">
+        <button class="btn" ng-click="findQuestion()">Search</button>
+        <p>{{current_question}}</p>
+    </form>
   </div>
+  <div ng-controller="questionCtrl">
+    <button ng-click="restart();">RESTART</button>
+     <div ng-if="question.id == current_question" ng-repeat="question in questions">
+       <h1>{{question.question}}</h1>
+       <div ng-if="question.text" class="text-input">
+         <input ng-model="user_state[question.text_target]" type="text" />
+         <button ng-click="nextQuestion(true);">Next</button>
+       </div>
+       <div ng-repeat="answer in question.answers">
+         <button ng-if="answer.display" ng-click="nextQuestion(answer.value)">{{answer.display}}</button>
+       </div>
+    </div>
 
-<ul ng-if="user_state.complete">
-  <li ng-repeat="todo in todos">{{todo.display}}</li>
-</ul>
+    <ul ng-if="user_state.complete">
+      <li ng-repeat="todo in todos">{{todo.display}}</li>
+    </ul>
 
-<pre>{{todo}}</pre>
-<pre>{{user_state}}</pre>
-
-
+    <pre>{{todo}}</pre>
+  </div>
 
 <script src="main.js"></script>
 </body>
-<script>
-</script>
 </html>

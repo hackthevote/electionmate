@@ -1,12 +1,13 @@
-getQuestion.factory('getQuestion', ['$http', function($http) {
+electionMateApp.factory('getRepQuestion', ['$http', function($http) {
   var queryUrl = 'https://represent.me/api/questions/';
+
   return {
-    query: function(searchTerm) {
+    query: function() {
       return $http({
         url: queryUrl,
         method: 'GET',
         params: {
-          'q': searchTerm
+          "search": "europe"
         }
       });
     }
