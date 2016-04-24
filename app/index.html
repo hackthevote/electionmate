@@ -17,7 +17,8 @@
 </head>
 <body ng-controller="electionMateCtrl">
   <button ng-click="restart();">RESTART</button>
-   <div ng-if="question.id == current_question" ng-repeat="question in questions" class="container">
+
+   <div ng-if="!user_state.complete && question.id == current_question" ng-repeat="question in questions" class="container">
      <h1 class="text-center">{{question.question}}</h1>
      <div ng-if="question.text" class="row text-input text-center">
        <input ng-model="user_state[question.text_target]" type="text" />
@@ -32,9 +33,13 @@
      </div>
   </div>
 
-<ul ng-if="user_state.complete">
-  <li ng-repeat="todo in todos">{{todo.display}}</li>
-</ul>
+  <div ng-if="user_state.complete" ng-repeat="todo in todos">
+    <input type="checkbox"
+           ng-model="todo.value"
+           ng-true-value="'complete'" ng-false-value="'incomplete'"
+           ng-change="todoChange()">
+    {{todo.display}}
+  </div>
 
 <pre>{{todo}}</pre>
 <pre>{{user_state}}</pre>
