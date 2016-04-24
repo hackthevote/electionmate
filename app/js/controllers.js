@@ -1,10 +1,16 @@
-electionMateApp.controller('electionMateCtrl', function($scope) {
+electionMateApp.controller('electionMateCtrl', function($scope, localStorageService) {
 
-    $scope.message = "hello world!!";
     $scope.current_question = 'registered';
     $scope.user_state = {};
     $scope.todos = [];
     $scope.questions = [];
+
+    var user_answers = localStorageService.get('user_answers');
+    $scope.user_state = user_answers || {};
+
+    $scope.$watch('user_state', function() {
+      localStorageService.set('user_answers', $scope.user_state);
+    }, true);
 
    $scope.start = function() {
      $scope.loadJSON(function(response) {
@@ -12,6 +18,16 @@ electionMateApp.controller('electionMateCtrl', function($scope) {
        $scope.questions = data["questions"];
        $scope.$digest();
      });
+   };
+   $scope.restart = function() {
+     localStorageService.set('user_answers', {});
+     $scope.reset();
+   };
+
+   $scope.reset = function() {
+     $scope.current_question = 'registered';
+     $scope.user_state = {};
+     $scope.todos = [];
    };
 
    $scope.loadJSON = function(callback) {
@@ -44,11 +60,11 @@ electionMateApp.controller('electionMateCtrl', function($scope) {
                 chosen_answer = found_answer;
             }
         }
-        
+
         if (chosen_answer.todo) {
             $scope.todos.push(chosen_answer.todo);
         }
-        
+
         if (chosen_answer.next_question === null) {
             $scope.user_state.complete = true;
         }
