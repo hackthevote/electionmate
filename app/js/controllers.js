@@ -13,12 +13,12 @@ electionMateApp.controller('electionMateCtrl', function($scope, localStorageServ
     }, true);
 
    $scope.start = function() {
-     $scope.loadJSON(function(response) {
-       var data = JSON.parse(response);
-       $scope.questions = data["questions"];
+     $.getJSON('js/questions.json', function(response) {
+       $scope.questions = response["questions"];
        $scope.$digest();
      });
    };
+
    $scope.restart = function() {
      localStorageService.set('user_answers', {});
      $scope.reset();
@@ -29,18 +29,6 @@ electionMateApp.controller('electionMateCtrl', function($scope, localStorageServ
      $scope.user_state = {};
      $scope.todos = [];
    };
-
-   $scope.loadJSON = function(callback) {
-     var xobj = new XMLHttpRequest();
-         xobj.overrideMimeType("application/json");
-     xobj.open('GET', 'js/questions.json', true); // Replace 'my_data' with the path to your file
-     xobj.onreadystatechange = function () {
-           if (xobj.readyState == 4 && xobj.status == "200") {
-             callback(xobj.responseText);
-           }
-     };
-     xobj.send(null);
-  };
 
     $scope.nextQuestion = function(value) {
         $scope.user_state[$scope.current_question] = value;
