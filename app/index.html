@@ -31,11 +31,7 @@
           
       </div>
     </div>
-    <div class="row questionpanel" style="    background: linear-gradient(
-                    rgba(0, 110, 160, 0.88),
-                    rgba(0, 110, 160, 0.88)
-                ),
-                url('../img/bg.png'); background-size: cover;">
+    <div class="row questionpanel" > 
        <div ng-if="question.id == current_question" ng-repeat="question in questions">
          <h1>{{question.question}}</h1>
          <div ng-if="question.text" class="text-input">

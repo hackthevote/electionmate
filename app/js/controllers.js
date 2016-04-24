@@ -6,8 +6,8 @@ electionMateApp.controller('electionMateCtrl', function($scope, localStorageServ
     var user_answers = localStorageService.get('user_answers');
     $scope.user_state = user_answers || {};
 
-    var current_question = localStorageService.get('current_question', 'registered');
-    $scope.current_question = current_question;
+    var current_question = localStorageService.get('current_question');
+    $scope.current_question = current_question || 'registered';
 
     $scope.$watch('user_state', function() {
       localStorageService.set('user_answers', $scope.user_state);
@@ -60,8 +60,10 @@ electionMateApp.controller('electionMateCtrl', function($scope, localStorageServ
 
         if (chosen_answer.next_question === null) {
             $scope.user_state.complete = true;
+            $scope.current_question = 'done';
+        } else {
+            $scope.current_question = chosen_answer.next_question;
         }
-        $scope.current_question = chosen_answer.next_question;
     };
 
     $scope.start();

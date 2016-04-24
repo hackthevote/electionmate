@@ -33,12 +33,9 @@ img#logo {
 }
 
 .questionpanel {
-    background: linear-gradient(
-                    rgba(0, 0, 255, 0.25),
-                    rgba(0, 0, 255, 0.25)
-                ),
-                url('../img/bg.png');
+    background: url('../img/electionbg2.jpg');
     background-position: bottom; 
+    background-size: cover;
     color: white;
     height: 100%;
     padding: 15px;
