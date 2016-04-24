@@ -17,14 +17,13 @@ electionMateApp.controller('electionMateCtrl', function($scope, localStorageServ
       localStorageService.set('current_question', $scope.current_question);
     }, true);
 
-   $scope.init = function() {
-     $scope.loadJSON(function(response) {
-       var data = JSON.parse(response);
-       $scope.questions = data["questions"];
+   $scope.start = function() {
+     $.getJSON('js/questions.json', function(response) {
+       $scope.questions = response["questions"];
        $scope.$digest();
      });
    };
-   
+
    $scope.restart = function() {
      localStorageService.set('user_answers', {});
      $scope.reset();
@@ -35,18 +34,6 @@ electionMateApp.controller('electionMateCtrl', function($scope, localStorageServ
      $scope.user_state = {};
      $scope.todos = [];
    };
-
-   $scope.loadJSON = function(callback) {
-     var xobj = new XMLHttpRequest();
-         xobj.overrideMimeType("application/json");
-     xobj.open('GET', 'js/questions.json', true); // Replace 'my_data' with the path to your file
-     xobj.onreadystatechange = function () {
-           if (xobj.readyState == 4 && xobj.status == "200") {
-             callback(xobj.responseText);
-           }
-     };
-     xobj.send(null);
-  };
 
     $scope.nextQuestion = function(value) {
         $scope.user_state[$scope.current_question] = value;
@@ -77,7 +64,6 @@ electionMateApp.controller('electionMateCtrl', function($scope, localStorageServ
         $scope.current_question = chosen_answer.next_question;
     };
 
-    $scope.init();
+    $scope.start();
 
 });
-
