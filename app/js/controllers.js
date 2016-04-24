@@ -59,4 +59,6 @@ electionMateApp.controller('electionMateCtrl', function($scope, localStorageServ
         $scope.current_question = chosen_answer.next_question;
     };
 
+    $scope.start();
+
 });
