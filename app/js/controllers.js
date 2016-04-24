@@ -1,15 +1,20 @@
 electionMateApp.controller('electionMateCtrl', function($scope, localStorageService) {
 
-    $scope.current_question = 'registered';
-    $scope.user_state = {};
     $scope.todos = [];
     $scope.questions = [];
 
     var user_answers = localStorageService.get('user_answers');
     $scope.user_state = user_answers || {};
 
+    var current_question = localStorageService.get('current_question');
+    $scope.current_question = current_question || 'registered';
+
     $scope.$watch('user_state', function() {
       localStorageService.set('user_answers', $scope.user_state);
+    }, true);
+
+    $scope.$watch('current_question', function() {
+      localStorageService.set('current_question', $scope.current_question);
     }, true);
 
    $scope.init = function() {

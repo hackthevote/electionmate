@@ -24,7 +24,7 @@
        <button ng-click="nextQuestion(true);">Next</button>
      </div>
      <div ng-repeat="answer in question.answers">
-       <button ng-click="nextQuestion(answer.value)">{{answer.display}}</button>
+       <button ng-if="answer.display" ng-click="nextQuestion(answer.value)">{{answer.display}}</button>
      </div>
   </div>
 
