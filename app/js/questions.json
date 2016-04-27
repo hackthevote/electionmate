@@ -25,7 +25,7 @@
               "next_question": "nino",
               "todo": {
                   "id": "maybe-registered",
-                  "deadline": "2014-07-07",
+                  "deadline": "2016-07-07",
                   "display": "Re-register to vote at https://www.gov.uk/register-to-vote, to be sure"
               }
           }
@@ -43,7 +43,7 @@
               "next_question": "on_the_day"
           },
           {
-              "value": true,
+              "value": "outside",
               "display": "I live outside the UK",
               "next_question": "post_or_proxy"
           },
@@ -61,7 +61,13 @@
           {
               "value": true,
               "display": "Yes",
-              "next_question": null
+              "next_question": null,
+              "todo": {
+                  "id": "vote",
+                  "deadline": "2016-07-23",
+                  "display": "Go to your local polling station to vote"
+              }
+              
           },
           {
               "value": false,
@@ -125,12 +131,22 @@
           {
               "value": true,
               "display": "Yes",
-              "next_question": null
+              "next_question": null,
+              "todo": {
+                  "id": "proxy",
+                  "deadline": "2016-07-23",
+                  "display": "Remind your proxy which polling station they need to go to"
+              }
           },
           {
               "value": false,
               "display": "No",
-              "next_question": null
+              "next_question": null,
+              "todo": {
+                  "id": "proxy",
+                  "deadline": "2016-07-15",
+                  "display": "Print and send the appropriate proxy vote application form to your council"
+              }
           }
       ]
   },
@@ -141,12 +157,22 @@
           {
               "value": true,
               "display": "Yes",
-              "next_question": null
+              "next_question": null,
+              "todo": {
+                  "id": "maybe-registered",
+                  "deadline": "2016-07-22",
+                  "display": "Return your completed postal vote"
+              }
           },
           {
               "value": false,
               "display": "No",
-              "next_question": null
+              "next_question": null,
+              "todo": {
+                  "id": "nino",
+                  "deadline": "2016-07-07",
+                  "display": "Print and send the postal vote application form to your council"
+              }
           }
       ]
   },
@@ -189,7 +215,12 @@
           {
               "value": true,
               "display": "Yes",
-              "next_question": "postcode"
+              "next_question": "postcode",
+              "todo": {
+                  "id": "no-nino",
+                  "deadline": "2016-07-06",
+                  "display": "Take a photo of your proof of ID. The council may ask to see it later."
+              }
           },
           {
               "value": false,

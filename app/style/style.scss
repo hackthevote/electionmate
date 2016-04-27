@@ -73,7 +73,6 @@ img#logo {
         margin: 0;
         padding: 0;
         .todo {
-            position: relative;
             margin: 10px;
             padding: 5px;
             border: 1px solid white;
@@ -82,17 +81,12 @@ img#logo {
             font-weight: 800;
             font-size: 14pt;
             &.checked {
-                background-color: lime !important;
+                background-color: #00B74A !important;
             }
             &.late {
-                background-color: red;
+                background-color: #fe8600;
             }
             label {
-                position: absolute;
-                top: 1.5ex;
-                left: 60px;
-                width: 100%;
-                height: 100%;
                 
             }
             input[type='checkbox'] {

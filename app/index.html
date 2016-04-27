@@ -44,16 +44,16 @@
         </div>
 
         <div id="todo-container">
-          <div class="todo" ng-class="{checked: todo.value=='complete', late: deadline &lt; date}" ng-if="user_state.complete"
+          <div class="todo" ng-class="{checked: todo.value, late: deadline &lt; date}" ng-if="user_state.complete"
                ng-repeat="todo in todos | orderBy:'deadline'"
                ng-init="deadline=(todo.deadline|jsDate)">
-            <input type="checkbox"
+            <label for="todo-{{todo.id}}">
+               <input type="checkbox"
                    id="todo-{{todo.id}}"
                    ng-model="todo.value"
                    ng-disabled="deadline &lt; date"
-                   ng-true-value="'complete'" ng-false-value="'incomplete'"
                    ng-change="todoChange()">
-            <label for="todo-{{todo.id}}"> {{todo.display}}</label>
+                   {{todo.display}}</label>
           </div>
         </div>
 
@@ -63,5 +63,14 @@
 <script src="main.js"></script>
 </body>
 <script>
+$(function(){
+  $('html').on('click', '.todo', function(evt){
+    if (evt.target !== this)
+        return;
+  
+    var inp = $(this).find("input");
+    inp.click();
+  })
+})
 </script>
 </html>
