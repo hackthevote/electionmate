@@ -12,7 +12,22 @@
           {
               "value": false,
               "display": "No",
-              "next_question": "nino"
+              "next_question": "nino",
+              "todo": {
+                  "id": "not-registered",
+                  "deadline": "2016-07-07",
+                  "display": "Register to vote at https://www.gov.uk/register-to-vote"
+              }
+          },
+          {
+              "value": false,
+              "display": "Maybe",
+              "next_question": "nino",
+              "todo": {
+                  "id": "maybe-registered",
+                  "deadline": "2014-07-07",
+                  "display": "Re-register to vote at https://www.gov.uk/register-to-vote, to be sure"
+              }
           }
       ]
   },
@@ -183,7 +198,7 @@
               "todo": {
                   "id": "nino",
                   "deadline": "2016-05-10",
-                  "display": "Phone the National Insurance numbers helpline on 0300 200 3502"
+                  "display": "Call 0300 200 3502 to get your National Insurance number posted to you"
               }
           }
       ]
