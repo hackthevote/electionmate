@@ -65,6 +65,8 @@ img#logo {
         width: 100%;
         margin-top: 5px;
         margin-bottom: 5px;
+        font-size: 2em;
+        padding: 0.5em;
     }
     pre {
         display: none;
@@ -80,6 +82,11 @@ img#logo {
             color: black;
             font-weight: 800;
             font-size: 14pt;
+            .additional {
+                margin-left: 80px;
+                margin-right: 80px;
+                font-size: 0.8em;
+            }
             &.checked {
                 background-color: #00B74A !important;
             }

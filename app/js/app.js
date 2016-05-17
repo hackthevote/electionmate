@@ -8,3 +8,8 @@ electionMateApp.filter("jsDate", function () {
       return Date.parse(x);
   };
 });
+electionMateApp.filter('rawHtml', ['$sce', function($sce){
+  return function(val) {
+    return $sce.trustAsHtml(val);
+  };
+}]);

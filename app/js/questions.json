@@ -26,37 +26,36 @@
               "todo": {
                   "id": "maybe-registered",
                   "deadline": "2016-07-07",
-                  "display": "Re-register to vote at https://www.gov.uk/register-to-vote, to be sure"
+                  "display": "Re-register to vote at https://www.gov.uk/register-to-vote",
+                  "additional": "You can't check if you're registered online, so if you're unsure <a href='https://www.gov.uk/register-to-vote'>submit another registration</a>"
               }
           }
       ]
   },
   {
       "id": "postcode",
-      "question": "What's your postcode",
-      "text": true,
-      "text_target": "postcode_entry",
+      "question": "Do you live in the UK?",
       "answers": [
           {
               "value": true,
-              "display": null,
+              "display": "Yes",
               "next_question": "on_the_day"
-          },
-          {
-              "value": "outside",
-              "display": "I live outside the UK",
-              "next_question": "post_or_proxy"
           },
           {
               "value": false,
-              "display": "I don't know",
-              "next_question": "on_the_day"
+              "display": "No",
+              "next_question": "post",
+              "todo": {
+                  "id": "post",
+                  "deadline": "2016-07-18",
+                  "display": "Post your completed postal vote to the address provided on the enclosed paperwork"
+              }
           }
       ]
   },
   {
       "id": "on_the_day",
-      "question": "Will you be there on the 23rd June 2016?",
+      "question": "Will you be able to get to your local polling station on the 23rd June 2016?",
       "answers": [
           {
               "value": true,
@@ -82,8 +81,13 @@
       "answers": [
           {
               "value": true,
-              "display": "Yes",
+              "display": "Yes, away from home",
               "next_question": "perm_or_temp"
+          },
+          {
+              "value": true,
+              "display": "Yes, at home but busy",
+              "next_question": "post"
           },
           {
               "value": false,
@@ -104,7 +108,7 @@
           {
               "value": "temp",
               "display": "I'm just visiting",
-              "next_question": null
+              "next_question": "post_or_proxy"
           }
       ]
   },
@@ -115,12 +119,22 @@
           {
               "value": "post",
               "display": "Vote by post",
-              "next_question": "post"
+              "next_question": "post",
+              "todo": {
+                  "id": "post",
+                  "deadline": "2016-07-23",
+                  "display": "Post your completed postal vote to the address provided on the enclosed paperwork"
+              }
           },
           {
               "value": "proxy",
               "display": "Have a friend vote for me",
-              "next_question": "proxy"
+              "next_question": "proxy",
+              "todo": {
+                  "id": "proxy",
+                  "deadline": "2016-07-23",
+                  "display": "Remind your proxy which polling station they need to go to"
+              }
           }
       ]
   },
@@ -131,11 +145,35 @@
           {
               "value": true,
               "display": "Yes",
-              "next_question": null,
+              "next_question": null
+          },
+          {
+              "value": false,
+              "display": "No",
+              "next_question": "proxy_printer",
               "todo": {
                   "id": "proxy",
-                  "deadline": "2016-07-23",
-                  "display": "Remind your proxy which polling station they need to go to"
+                  "deadline": "2016-07-15",
+                  "display": "Send the proxy vote application form to your local council",
+                  "additional": "<a href='http://www.aboutmyvote.co.uk/register-to-vote/find-your-local-authority'>List of UK electoral registration offices</a>."
+                  
+              }
+          }
+      ]
+  },
+  {
+      "id": "proxy_printer",
+      "question": "Do you have a printer?",
+      "answers": [
+          {
+              "value": true,
+              "display": "Yes",
+              "next_question": null,
+              "todo": {
+                  "id": "print_proxy",
+                  "deadline": "2016-07-14",
+                  "display": "Download and print send the proxy vote application form",
+                  "additional": "<a href='https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/410339/Proxy_voting_form_temporarily_away_from_home.pdf'>Proxy vote form - temporarily away from home</a>"
               }
           },
           {
@@ -143,9 +181,9 @@
               "display": "No",
               "next_question": null,
               "todo": {
-                  "id": "proxy",
-                  "deadline": "2016-07-15",
-                  "display": "Print and send the appropriate proxy vote application form to your council"
+                  "id": "request_proxy",
+                  "deadline": "2016-07-08",
+                  "display": "Call your local council to request a proxy vote form be sent to you"
               }
           }
       ]
@@ -157,19 +195,14 @@
           {
               "value": true,
               "display": "Yes",
-              "next_question": null,
-              "todo": {
-                  "id": "maybe-registered",
-                  "deadline": "2016-07-22",
-                  "display": "Return your completed postal vote"
-              }
+              "next_question": null
           },
           {
               "value": false,
               "display": "No",
               "next_question": null,
               "todo": {
-                  "id": "nino",
+                  "id": "print_and_send_postal",
                   "deadline": "2016-07-07",
                   "display": "Print and send the postal vote application form to your council"
               }
@@ -219,7 +252,8 @@
               "todo": {
                   "id": "no-nino",
                   "deadline": "2016-07-06",
-                  "display": "Take a photo of your proof of ID. The council may ask to see it later."
+                  "display": "Take a photo of your proof of ID. The council may ask to see it later.",
+                  "additional": "Don't worry if you don't have it to hand, you won't need to have the photo to fill in the form"
               }
           },
           {
@@ -228,8 +262,9 @@
               "next_question": "postcode",
               "todo": {
                   "id": "nino",
-                  "deadline": "2016-05-10",
-                  "display": "Call 0300 200 3502 to get your National Insurance number posted to you"
+                  "deadline": "2016-05-30",
+                  "display": "Call 0300 200 3502 to get your National Insurance number posted to you",
+                  "additional": "If it doesn't arrive in time, just don't fill in the field on the form."
               }
           }
       ]

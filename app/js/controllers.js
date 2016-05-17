@@ -32,6 +32,8 @@ electionMateApp.controller('electionMateCtrl', function($scope, localStorageServ
      });
 
    };
+   
+   $scope.days = Math.floor((new Date("June, 23, 2016") - new Date())/(1000*60*60*24));
 
    $scope.restart = function() {
      localStorageService.set('user_answers', {});
