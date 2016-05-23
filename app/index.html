@@ -21,40 +21,61 @@
 <body ng-controller="electionMateCtrl">
   <div class="container-fluid">
     <!-- Stack the columns on mobile by making one full-width and the other half-width -->
-    <div class="row">
+    <div class="row" id="header">
       <div class="col-xs-6">
           <img id="logo" src="img/logo.png" width="150" />
       </div>
-      <div class="col-xs-6">
-          <p><strong>Days remaining:</strong> {{days}}</p>
-          <button ng-click="restart();">RESTART</button>
+      <div class="col-xs-6" id="infopanel">
+          <p><em>Hurry!</em> There are only <strong>{{days}} days</strong> left until the referendum.</p>
+          <a ng-click="restart();"><small>Oops, I made a mistake. Try again.</small></a>
           
       </div>
     </div>
     <div class="row questionpanel" > 
+      <div class="question" ng-if="current_question == 'registered'">
+      <h3>Forms, huh?</h3>
+        <p>Registering to vote is important, but it can be complicated, especially if you&apos;re not living at home.</p>
+        <p>This site will guide you through what forms you need to fill in and when. It will also try and send you notifications when deadlines are looming.</p>
+        <hr />
+      </div>
+      
        <div class="question" ng-if="question.id == current_question" ng-repeat="question in questions">
          <h1>{{question.question}}</h1>
+         <h4>{{question.additional}}</h4>
          <div ng-if="question.text" class="text-input">
            <input ng-model="user_state[question.text_target]" type="text" />
            <button ng-click="nextQuestion(true);">Next</button>
          </div>
          <div ng-repeat="answer in question.answers">
-           <button ng-if="answer.display" ng-click="nextQuestion(answer.value)">{{answer.display}}</button>
+           <button ng-if="answer.display" ng-click="nextQuestion(answer.value)"><span>{{answer.display}}</span></button>
          </div>
         </div>
 
-        <div id="todo-container">
-          <div class="todo" ng-class="{checked: todo.value, late: deadline &lt; date}" ng-if="user_state.complete"
+        <div id="todo-container"  ng-if="user_state.complete">
+          <h3>Great, let&apos;s get you ready to vote.</h3>
+          <p>Follow the prompts below and tap each one once you've finished to mark it as complete. If you gave us permission to send you notifications we'll try and remind you before the deadlines. If you want to enable this, tap the padlock in the address bar and allow notifications.</p>
+          <p>If you come back to this site on the same device, your todo list will still be here.</p>
+          <hr />
+          <div class="todo" ng-class="{checked: todo.value, late: deadline &lt; date}"
                ng-repeat="todo in todos | orderBy:'deadline'"
                ng-init="deadline=(todo.deadline|jsDate)">
             <label for="todo-{{todo.id}}">
                <input type="checkbox"
+                   class="check"
                    id="todo-{{todo.id}}"
                    ng-model="todo.value"
                    ng-disabled="deadline &lt; date"
                    ng-change="todoChange()">
-                   {{todo.display}}
+                   <span ng-if="todo.value" class="status">
+                     😊
+                   </span>
+                   <span ng-if="!todo.value" class="status">
+                     😟
+                   </span>
+                   
+                 <p class="main">{{todo.display}}</p>
                  <p class="additional" ng-bind-html="todo.additional | rawHtml "></p>
+                 <p class="additional">Do this by {{ deadline|date : 'EEEE, d MMMM' }}.</p>
                  </label>
           </div>
         </div>

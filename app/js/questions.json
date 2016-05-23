@@ -1,7 +1,7 @@
 { "questions": [{
 
       "id": "registered",
-      "question": "Are you registered to vote?",
+      "question": "Are you already registered to vote?",
       "text": false,
       "answers": [
           {
@@ -15,8 +15,9 @@
               "next_question": "nino",
               "todo": {
                   "id": "not-registered",
-                  "deadline": "2016-07-07",
-                  "display": "Register to vote at https://www.gov.uk/register-to-vote"
+                  "deadline": "2016-06-06",
+                  "display": "Register to vote at gov.uk",
+                  "additional": "Just <a href='https://www.gov.uk/register-to-vote'>click on through</a> to the site and fill in the form"
               }
           },
           {
@@ -25,8 +26,8 @@
               "next_question": "nino",
               "todo": {
                   "id": "maybe-registered",
-                  "deadline": "2016-07-07",
-                  "display": "Re-register to vote at https://www.gov.uk/register-to-vote",
+                  "deadline": "2016-06-06",
+                  "display": "Re-register to vote on gov.uk",
                   "additional": "You can't check if you're registered online, so if you're unsure <a href='https://www.gov.uk/register-to-vote'>submit another registration</a>"
               }
           }
@@ -47,7 +48,7 @@
               "next_question": "post",
               "todo": {
                   "id": "post",
-                  "deadline": "2016-07-18",
+                  "deadline": "2016-06-18",
                   "display": "Post your completed postal vote to the address provided on the enclosed paperwork"
               }
           }
@@ -56,6 +57,7 @@
   {
       "id": "on_the_day",
       "question": "Will you be able to get to your local polling station on the 23rd June 2016?",
+      "additional": "They're open from 7am until 10pm",
       "answers": [
           {
               "value": true,
@@ -63,7 +65,7 @@
               "next_question": null,
               "todo": {
                   "id": "vote",
-                  "deadline": "2016-07-23",
+                  "deadline": "2016-06-23",
                   "display": "Go to your local polling station to vote"
               }
               
@@ -99,6 +101,7 @@
   {
       "id": "perm_or_temp",
       "question": "Will you be somewhere that you live on the 23rd, or are you temporarily away from home",
+      "additional": "If you have two homes, like your uni and home addresses, you can register at both places",
       "answers": [
           {
               "value": "perm",
@@ -115,6 +118,7 @@
   {
       "id": "post_or_proxy",
       "question": "Would you prefer to vote in advance by post or have a friend vote for you?",
+      "additional": "You can change this decision at any time in future",
       "answers": [
           {
               "value": "post",
@@ -122,7 +126,7 @@
               "next_question": "post",
               "todo": {
                   "id": "post",
-                  "deadline": "2016-07-23",
+                  "deadline": "2016-06-23",
                   "display": "Post your completed postal vote to the address provided on the enclosed paperwork"
               }
           },
@@ -132,7 +136,7 @@
               "next_question": "proxy",
               "todo": {
                   "id": "proxy",
-                  "deadline": "2016-07-23",
+                  "deadline": "2016-06-23",
                   "display": "Remind your proxy which polling station they need to go to"
               }
           }
@@ -153,7 +157,7 @@
               "next_question": "proxy_printer",
               "todo": {
                   "id": "proxy",
-                  "deadline": "2016-07-15",
+                  "deadline": "2016-06-15",
                   "display": "Send the proxy vote application form to your local council",
                   "additional": "<a href='http://www.aboutmyvote.co.uk/register-to-vote/find-your-local-authority'>List of UK electoral registration offices</a>."
                   
@@ -164,6 +168,7 @@
   {
       "id": "proxy_printer",
       "question": "Do you have a printer?",
+      "additional": "If you can print stuff out you won't have to call the council to ask for forms...",
       "answers": [
           {
               "value": true,
@@ -171,7 +176,7 @@
               "next_question": null,
               "todo": {
                   "id": "print_proxy",
-                  "deadline": "2016-07-14",
+                  "deadline": "2016-06-14",
                   "display": "Download and print send the proxy vote application form",
                   "additional": "<a href='https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/410339/Proxy_voting_form_temporarily_away_from_home.pdf'>Proxy vote form - temporarily away from home</a>"
               }
@@ -182,7 +187,7 @@
               "next_question": null,
               "todo": {
                   "id": "request_proxy",
-                  "deadline": "2016-07-08",
+                  "deadline": "2016-06-08",
                   "display": "Call your local council to request a proxy vote form be sent to you"
               }
           }
@@ -203,7 +208,7 @@
               "next_question": null,
               "todo": {
                   "id": "print_and_send_postal",
-                  "deadline": "2016-07-07",
+                  "deadline": "2016-06-06",
                   "display": "Print and send the postal vote application form to your council"
               }
           }
@@ -228,6 +233,7 @@
   {
       "id": "nino",
       "question": "Do you know your National Insurance number",
+      "additional": "No biggie either way, it just makes the form slightly quicker",
       "answers": [
           {
               "value": true,
@@ -237,7 +243,7 @@
           {
               "value": false,
               "display": "No",
-              "next_question": "too_late"
+              "next_question": "no-nino"
           }
       ]
   },
@@ -251,7 +257,7 @@
               "next_question": "postcode",
               "todo": {
                   "id": "no-nino",
-                  "deadline": "2016-07-06",
+                  "deadline": "2016-06-06",
                   "display": "Take a photo of your proof of ID. The council may ask to see it later.",
                   "additional": "Don't worry if you don't have it to hand, you won't need to have the photo to fill in the form"
               }

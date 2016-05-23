@@ -3,7 +3,7 @@ $hack-blue: rgb(31, 35, 171);
 $mobile-break: 850px;
 $large-break: 1100px;
 $font-family: "Lato", sans-serif;
-$background-color: #fff;
+$background-color: rgb(20, 100, 130);
 $info-grey: #424242;
 //$button-colour: #b7b7b7;
 $button-colour: $hack-blue;
@@ -21,7 +21,7 @@ body {
   font-family: 'Lato', sans-serif;
   font-weight: 100;
 }
-h1 {
+h1,h2,h3,h4 {
     font-weight: 100;
 }
 
@@ -32,18 +32,29 @@ html,body,.container-fluid {
 img#logo {
 }
 
+#header {
+    background-color: white;
+    #infopanel {
+        padding-top: 10px;
+        a:hover {
+            cursor: pointer;
+        }
+    }
+}
+
 .questionpanel {
     background: linear-gradient(
                    rgba(0, 110, 160, 0.80),
                    rgba(0, 110, 160, 0.80)
                ),
                url('../img/bg.png');
+   background: rgb(0, 110, 160);
     background-size: cover;           
     background-position: bottom; 
     color: white;
     height: 100%;
     padding: 15px;
-    h1 {
+    h1,h2,h3,h4 {
         text-align: center;
     }
     input[type='text'] {
@@ -58,6 +69,20 @@ img#logo {
     }
     input:active {
         border: none !important;
+    }
+    button {
+        &:active {
+            &:before {
+                content: '😀😀😀😀😀😀😀';
+            }
+            span {
+                font-size: 0;
+            }
+        }
+        &:active,&:hover {
+            background-color: white;
+            color: black;
+        }
     }
     button {
         border: 2px solid white;
@@ -82,6 +107,11 @@ img#logo {
             color: black;
             font-weight: 800;
             font-size: 14pt;
+            min-height: 100px;
+            .main {
+                margin-left: 80px;
+                margin-right: 10px;
+            }
             .additional {
                 margin-left: 80px;
                 margin-right: 80px;
@@ -92,6 +122,13 @@ img#logo {
             }
             &.late {
                 background-color: #fe8600;
+            }
+            .check {
+                display: none;
+            }
+            .status {
+                font-size: 55px;
+                position: absolute;
             }
             label {
                 
@@ -116,9 +153,22 @@ img#logo {
           #todo-container {
               margin-left: auto;
               margin-right: auto;
-              width: 700px;          
+              width: 700px;
           }
     }
+    
+    @media screen 
+      and (max-device-width: 500px) { 
+          #todo-container {
+              .todo {
+                  .additional {
+                      margin-left: 10px;
+                      margin-right: 10px;
+                  }
+              }
+          }
+    }
+    
 }
 
 
