@@ -243,7 +243,13 @@
           {
               "value": false,
               "display": "No",
-              "next_question": "no-nino"
+              "next_question": "postcode",
+              "todo": {
+                  "id": "no-nino",
+                  "deadline": "2016-06-06",
+                  "display": "Take a photo of your proof of ID. The council may ask to see it later.",
+                  "additional": "Don't worry if you don't have it to hand, you won't need to have the photo to fill in the form"
+              }
           }
       ]
   },
