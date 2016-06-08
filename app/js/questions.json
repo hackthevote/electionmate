@@ -15,7 +15,7 @@
               "next_question": "nino",
               "todo": {
                   "id": "not-registered",
-                  "deadline": "2016-06-06",
+                  "deadline": "2016-06-09",
                   "display": "Register to vote at gov.uk",
                   "additional": "Just <a href='https://www.gov.uk/register-to-vote'>click on through</a> to the site and fill in the form"
               }
@@ -26,7 +26,7 @@
               "next_question": "nino",
               "todo": {
                   "id": "maybe-registered",
-                  "deadline": "2016-06-06",
+                  "deadline": "2016-06-09",
                   "display": "Re-register to vote on gov.uk",
                   "additional": "You can't check if you're registered online, so if you're unsure <a href='https://www.gov.uk/register-to-vote'>submit another registration</a>"
               }
